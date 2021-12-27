@@ -1,0 +1,15 @@
+{%  extends 'home.html' %}
+
+{% block posts %}
+    {% for post in posts %}
+    <div style="width: 80%; margin-top: 40px">
+    <h2> {{ post.title|capfirst }}</h2>
+    </p>
+    {% if post.image %}
+        <img src="{{ post.image.url }}" style="width: 100%">
+    {% endif %}
+    <p>{{ post.content|capfirst }}</p>
+    <p>{{ post.issues }}</p>
+    </div>
+    {% endfor %}
+{%  endblock %}

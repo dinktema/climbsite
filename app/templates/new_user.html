@@ -1,0 +1,50 @@
+{%  extends "base.html" %}
+
+{% block content %}
+<div style="margin-left: 60px; margin-top: 20px; height: 600px" >
+    {% if form.errors %}
+        <p>Username or password didn't match. Try again</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>You account doesn't have access to this page</p>
+        {% else %}
+            <p>Please login to see this page</p>
+        {% endif %}
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+    <table>
+        <tr>
+            <td> {{ form.name.label_tag }} </td>
+            <td> {{ form.name }} </td>
+        </tr>
+        <tr>
+            <td> {{ form.password.label_tag }} </td>
+            <td> {{ form.password }} </td>
+        </tr>
+        <tr>
+            <td> {{ form.password2.label_tag }} </td>
+            <td> {{ form.password2 }} </td>
+        </tr>
+        <tr>
+            <td> {{ form.email.label_tag }} </td>
+            <td> {{ form.email }} </td>
+        </tr>
+        <tr>
+            <td> {{ form.image.label_tag }} </td>
+            <td> {{ form.image }} </td>
+        </tr>
+    </table>
+    <input style="margin-top: 10px;" type="submit" value="Create account" />
+    <input type="hidden" value="next" value="{{ next }}"/>
+    </form>
+    <p></p>
+    <p></p>
+    <p><a href="{% url 'login' %}" style="color: #205067; margin-top: 40px">Do you have the account?</a></p>
+</div>
+{% endblock %}
+</body>
+</html>

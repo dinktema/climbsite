@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div style="width: 80%; margin-left: 150px; margin-top: 40px">
+    <h1 style="horiz-align: center; ">Climbing zone "BIGWALL"</h1>
+    <img src="{%  static 'app/img/main.jpg' %}" style="width: 80%" />
+    {% block posts %}
+
+    {% endblock %}
+</div>
+{% endblock %}

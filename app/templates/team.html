@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="margin-left: 150px; margin-top: 50px;">
+    {% for c in climbers %}
+        <h1 style="margin-top: 40px;"> {{ c.name }}</h1>
+        <h5> {{ c.email }}</h5>
+        {% if c.image %}
+            <img src="{{ c.image.url }}" width='200'>
+        {% endif %}
+        <p></p>
+        <input type="button" value="Like">
+        <p></p>
+        <p></p>
+        <p></p>
+    {% endfor %}
+{% endblock %}
+

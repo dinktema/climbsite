@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="margin-left: 50px">
+    <a href="{% url 'posts' %}" style="width: max-content;  text-decoration: none; outline: none;"> All posts</a><a> |</a>
+    <a href="{% url 'posts_filter' p.post_type %}" style="width: max-content;  text-decoration: none; outline: none;">
+    {%  if p.post_type == 'o' %}
+        Posts by type 'Organization'
+    {%  elif p.post_type == 'tr' %}
+        Posts by type 'Trip'
+    {%  elif p.post_type == 'd' %}
+        Posts by type 'Diary'
+    {%  elif p.post_type == 't' %}
+        Posts by type 'Training'
+    {%  elif p.post_type == 'm' %}
+        Posts by type 'Misc'
+    {%  elif p.post_type == 'c' %}
+        Posts by type 'Community'
+    {%  elif p.post_type == 's' %}
+        Posts by type 'Sales'
+    {%  elif p.post_type == 'k' %}
+        Posts by type 'Knowledge'
+    {%  else %}
+        Posts by type 'Offtop'
+    {% endif %}</a>
+    <h1> {{ p.title|capfirst }}</h1>
+    <h2> {{ p.subtitle|capfirst }}</h2>
+    <p> Author: {{ p.climber.name }}; Location: {{ p.location }}
+    </p>
+    {% if p.image %}
+        <img src="{{ p.image.url }}" width='80%'>
+    {% endif %}
+    <p>{{ p.content|capfirst }}</p>
+    {%  if p.post_type == 'o' %}
+        <p>Organization</p>
+    {%  elif p.post_type == 'tr' %}
+        <p>type: Trip</p>
+    {%  elif p.post_type == 'd' %}
+        <p>type: Diary</p>
+    {%  elif p.post_type == 't' %}
+        <p>type: Training</p>
+    {%  elif p.post_type == 'm' %}
+        <p>type: Misc</p>
+    {%  elif p.post_type == 'c' %}
+        <p>type: Community</p>
+    {%  elif p.post_type == 's' %}
+        <p>type: Sales</p>
+    {%  elif p.post_type == 'k' %}
+        <p>type: Knowledge</p>
+    {%  else %}
+        <p>type: Offtop</p>
+    {% endif %}
+    <p>{{ p.issues }}</p>
+</div>
+{%  endblock %}
